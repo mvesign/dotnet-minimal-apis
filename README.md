@@ -7,12 +7,15 @@ Small setup where the differences between a regular Web API and the .NET6 Minima
 Project consist of three projects.
 
 * DotNetApis.Shared
+
   *Library consist of the shared logic which isn't required to setup either a Web API or Minimal API. It consist of services, models, filters and custom exceptions.*
 
 * DotNetApis.WebApi
+
   *Web application where setup of controllers is setup in it's own class.*
 
 * DotNetApis.MinimalApi
+
   *Web application with the setup of endpoints in the main program of the application.*
 
 ### Swagger
