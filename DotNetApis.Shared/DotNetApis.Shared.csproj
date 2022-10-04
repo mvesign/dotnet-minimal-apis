@@ -5,6 +5,7 @@
     <!-- Using statements are auto-generated at .\obj\Debug\net6.0\DotNetApis.Shared.GlobalUsings.g.cs -->
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

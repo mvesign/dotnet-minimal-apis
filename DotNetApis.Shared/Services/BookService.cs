@@ -1,9 +1,11 @@
-﻿using DotNetApis.Shared.Exceptions;
+﻿using DotNetApis.Shared.Abstractions.Services;
+using DotNetApis.Shared.Exceptions;
 using DotNetApis.Shared.Models;
 
 namespace DotNetApis.Shared.Services;
 
-public class BookService
+/// <inheritdoc />
+public class BookService : IBookService
 {
     #region Pre-setup set of books
 
@@ -73,18 +75,11 @@ public class BookService
 
     #endregion
 
+    /// <inheritdoc />
     public IEnumerable<Book> GetBooks() =>
         _books;
 
-    public Book GetBook(string isbn)
-    {
-        var book = _books.FirstOrDefault(_ => string.Equals(_.Isbn, isbn, StringComparison.OrdinalIgnoreCase));
-        if (book == null)
-            throw new NotFoundException($"No book found for ISBN '{isbn}'");
-
-        return book;
-    }
-
+    /// <inheritdoc />
     public Book AddBook(Book? book)
     {
         if (book == null)
@@ -94,6 +89,17 @@ public class BookService
         return book;
     }
 
+    /// <inheritdoc />
+    public Book GetBook(string isbn)
+    {
+        var book = _books.FirstOrDefault(_ => string.Equals(_.Isbn, isbn, StringComparison.OrdinalIgnoreCase));
+        if (book == null)
+            throw new NotFoundException($"No book found for ISBN '{isbn}'");
+
+        return book;
+    }
+
+    /// <inheritdoc />
     public Book UpdateBook(string isbn, Book? book)
     {
         if (book == null)
@@ -113,6 +119,7 @@ public class BookService
         return book;
     }
 
+    /// <inheritdoc />
     public void DeleteBook(string isbn)
     {
         var match = _books.FirstOrDefault(_ => string.Equals(_.Isbn, isbn, StringComparison.OrdinalIgnoreCase));

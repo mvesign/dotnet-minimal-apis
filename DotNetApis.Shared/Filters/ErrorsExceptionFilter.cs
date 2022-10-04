@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace DotNetApis.Shared.Filters;
 
+/// <inheritdoc />
 public class ErrorsExceptionFilter : IExceptionFilter
 {
+    /// <inheritdoc />
     public void OnException(ExceptionContext context)
     {
         if (context.ExceptionHandled)
