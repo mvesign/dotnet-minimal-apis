@@ -23,12 +23,18 @@ public class ErrorsExceptionFilter : IExceptionFilter
             _ => HttpStatusCode.InternalServerError
         };
 
-        var message = statusCode != HttpStatusCode.InternalServerError
-            ? context.Exception.Message
-            : "Something bad has happened!";
+        var messages = new[]
+        {
+            statusCode != HttpStatusCode.InternalServerError
+                ? context.Exception.Message
+                : "Something bad has happened!"
+        };
 
+        if (context.Exception is InvalidModelException invalidModelException)
+            messages = invalidModelException.Messages ?? messages;
+        
         context.ExceptionHandled = true;
-        context.Result = new ObjectResult(new ApiError(message))
+        context.Result = new ObjectResult(new ApiError(messages))
         {
             StatusCode = (int?)statusCode
         };

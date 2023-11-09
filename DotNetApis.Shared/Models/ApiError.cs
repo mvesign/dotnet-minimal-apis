@@ -1,7 +1,10 @@
-﻿namespace DotNetApis.Shared.Models;
+﻿using JetBrains.Annotations;
+
+namespace DotNetApis.Shared.Models;
 
 /// <summary>
 /// Error details.
 /// </summary>
-/// <param name="Message">Message.</param>
-public record ApiError(string Message);
+/// <param name="Messages">Set of messages why the error has occurred.</param>
+[PublicAPI]
+public record ApiError(params string[] Messages);

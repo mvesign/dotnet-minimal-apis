@@ -105,7 +105,7 @@ public class BookService : IBookService
         if (book == null)
             throw new ArgumentNullException(nameof(book));
 
-        if (!string.IsNullOrWhiteSpace(book.Isbn) && !string.Equals(book.Isbn, isbn, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(book.Isbn, isbn, StringComparison.OrdinalIgnoreCase))
             throw new InvalidModelException($"ISBN '{isbn}' is different than '{book.Isbn}'");
         
         var match = _books.FirstOrDefault(_ => string.Equals(_.Isbn, isbn, StringComparison.OrdinalIgnoreCase));

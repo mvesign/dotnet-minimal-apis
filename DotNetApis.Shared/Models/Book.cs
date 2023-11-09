@@ -1,8 +1,11 @@
-﻿namespace DotNetApis.Shared.Models;
+﻿using JetBrains.Annotations;
+
+namespace DotNetApis.Shared.Models;
 
 /// <summary>
 /// Book details.
 /// </summary>
+[PublicAPI]
 public class Book
 {
     /// <summary>
